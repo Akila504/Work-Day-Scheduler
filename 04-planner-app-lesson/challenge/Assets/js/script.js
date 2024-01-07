@@ -1,17 +1,36 @@
-//First part in HTML I can hard code the time block html
-//i.e from 9 am to 5pm 
+
+const currentDay = $("#currentDay")
 
 
 
-//Second part once the HTML is done// 
+//Second part once the HTML is done
 
-// we will have to select all the time blocks that we need i.e using one ID tag 
-// omce the time blocks are selected we need to be able to add in a description to each time slot 
+//2.1 SHould display the date and the current time using day JS
+//So select the CURRENT DAY id
+//use day js
+//append day js to the header selctor
+function displaydaytime() {
+  const today = dayjs()
+  currentDay.text(today)
+}
+//calling the displaydaytime every 1 second 
+setInterval(displaydaytime, 1000)
+
+//2.2 color coding
+
+function colorCode() {
 
 
 
-//if one of the time blocks is clicked then we want to be able to input text
-//if the current time block time is either greater or less than the current time we need to color code
-//each time block should have a save button appended to it
-// the save button should have a click event when clicked will save the user input into local storage.
-// the events should be present even on page refresh 
+}
+
+//if the time right now is less than the time on the time block then apply class past
+//if the time right now is within the timeblock then apply class present
+//if the time right now is less than the timeblock time than apply the clas future
+
+//select all the data using jquery
+//On click of the save button we want to save the input to local storage
+//if there exists data in local storage then we want to push the data into the text selector
+//this will mean the data will remain even on refresh 
+
+
