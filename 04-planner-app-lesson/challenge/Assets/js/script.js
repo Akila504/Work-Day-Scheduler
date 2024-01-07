@@ -1,5 +1,6 @@
-
 const currentDay = $("#currentDay")
+// const textArea = $("textarea")
+const currentTime = parseInt(dayjs().format('H'))
 
 
 
@@ -16,17 +17,44 @@ function displaydaytime() {
 //calling the displaydaytime every 1 second 
 setInterval(displaydaytime, 1000)
 
+
 //2.2 color coding
 
-function colorCode() {
+let hour = [];
 
-
-
+for (let i = 1; i < 10; i++) {
+  const element = $(`#hour${[i]}`).text()
+  hour.push(element)
 }
 
-//if the time right now is less than the time on the time block then apply class past
-//if the time right now is within the timeblock then apply class present
-//if the time right now is less than the timeblock time than apply the clas future
+
+// const example1 = dayjs().hour(parseInt(hour[1]))
+// const example2 = parseInt(dayjs(example1).format('H'))
+// console.log(typeof example2)
+
+
+
+
+function colorCode() {
+  for (let i = 0; i < hour.length; i++) {
+    const textTime = dayjs().hour(parseInt(hour[i]))
+    const timeBlockTime = parseInt(dayjs(textTime).format('H'))
+
+    if (timeBlockTime < currentTime) {
+      $(`#text${i}`).addClass('past')
+    }
+    else if (timeBlockTime === currentTime) {
+      $(`#text${i}`).addClass('present')
+    }
+    else if (timeBlockTime > currentTime) {
+      $(`#text${i}`).addClass('future')
+    }
+  }
+}
+
+colorCode()
+
+
 
 //select all the data using jquery
 //On click of the save button we want to save the input to local storage
