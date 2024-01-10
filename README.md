@@ -13,10 +13,10 @@ N/A
 
 ## Usage
 
-To see the completed website please visit : 
+To see the completed website please visit : https://akila504.github.io/Work-Day-Scheduler/
 
 
-![the website should look like this](assets/Screenshot.jpeg)
+![the website should look like this](/04-planner-app-lesson/challenge/images/05-third-party-apis-homework-demo.gif)
 
 ## Credits
 N/A
