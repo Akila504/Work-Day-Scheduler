@@ -18,7 +18,8 @@ function displaydaytime() {
 setInterval(displaydaytime, 1000)
 
 
-//2.2 color coding
+//2.2 color coding 
+
 
 let hour = [];
 
@@ -26,13 +27,6 @@ for (let i = 1; i < 10; i++) {
   const element = $(`#hour${[i]}`).text()
   hour.push(element)
 }
-
-
-// const example1 = dayjs().hour(parseInt(hour[1]))
-// const example2 = parseInt(dayjs(example1).format('H'))
-// console.log(typeof example2)
-
-
 
 
 function colorCode() {
@@ -56,9 +50,41 @@ colorCode()
 
 
 
-//select all the data using jquery
-//On click of the save button we want to save the input to local storage
-//if there exists data in local storage then we want to push the data into the text selector
-//this will mean the data will remain even on refresh 
+
+
+//if clicked on save button set the data to local storage 
+//if there is data already in local storage we will append the text to the inner text of the html 
+
+function savingData() {
+  for (let i = 0; i < hour.length; i++) {
+    $(".saveBtn").on("click", function (e) {
+
+      let tbValue = $(`#text${i}`).val()
+      let StoredJson = JSON.parse(localStorage.getItem(`tbData${[i]}`))
+      StoredJson = tbValue
+
+
+      if (StoredJson !== null) {
+        tbValue = StoredJson
+        localStorage.setItem(`tbData${[i]}`, JSON.stringify(tbValue))
+      } else {
+        localStorage.setItem(`tbData${[i]}`, JSON.stringify(tbValue))
+      }
+
+    })
+  }
+}
+
+savingData()
+
+
+
+
+for (let i = 0; i < hour.length; i++) {
+  let history = JSON.parse(localStorage.getItem(`tbData${[i]}`))
+  let tbValue = history
+  console.log(history)
+  document.getElementById(`text${i}`).innerText = tbValue
+}
 
 
